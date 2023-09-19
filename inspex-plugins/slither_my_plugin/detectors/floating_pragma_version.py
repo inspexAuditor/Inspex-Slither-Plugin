@@ -1,13 +1,9 @@
 from pprint import pprint
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
-from slither.core.declarations import Contract
-from slither.slithir.operations.event_call import EventCall
 from slither.utils.output import Output
 from slither_my_plugin.utils.table_generator import markdownTableFromSlitherResult
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
-
 
 class FloatingPragmaVersion(AbstractDetector, SummaryTable):
 
@@ -22,7 +18,6 @@ class FloatingPragmaVersion(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Floating pragma version should not be used"
     WIKI_DESCRIPTION = "Smart contract compiler version can be specified using a floating pragma version; however, that may allow the contract to be compiled with other compiler versions than the one intended by the authors."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 // SPDX-License-Identifier: MIT

@@ -1,9 +1,7 @@
 from pprint import pprint
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
-from slither.slithir.operations.event_call import EventCall
 from slither.utils.output import Output
 from slither_my_plugin.utils.table_generator import markdownTableFromSlitherResult
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
@@ -22,7 +20,6 @@ class AssertStatement(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Assert statement should not be used for validating common conditions"
     WIKI_DESCRIPTION = "The assert() statement is an overly assertive checking that drains all gas in the transaction when triggered. A properly functioning smart contract should never reach a failing assert statement. Instead, the require() statement should be used to validate that the conditions are met, or to validate return values from external contract callings."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 function withdraw(uint256 amount) external {

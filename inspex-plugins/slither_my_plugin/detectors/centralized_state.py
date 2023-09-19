@@ -1,12 +1,9 @@
 from pprint import pprint
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
-from slither.core.declarations import Contract, FunctionContract
-from slither.slithir.operations.event_call import EventCall
+from slither.core.declarations import FunctionContract
 from slither.utils.output import Output
 from slither.core.expressions.call_expression import CallExpression
-from slither.core.expressions.expression import Expression
 from slither_my_plugin.utils.table_generator import markdownTableFromSlitherResult
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
 from slither_my_plugin.detectors.extends.privilege_list import PrivilegeList

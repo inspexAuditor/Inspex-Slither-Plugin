@@ -1,12 +1,7 @@
-from pprint import pprint
 from typing import List
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
-from slither.core.expressions.call_expression import CallExpression
 from slither.utils.output import Output
-from slither_my_plugin.utils.table_generator import markdownTableFromSlitherResult
-from slither_my_plugin.detectors.extends.summary_table import SummaryTable
-
 
 class SelfInvocation(AbstractDetector):
 
@@ -74,42 +69,3 @@ function bulkBuy(uint256[] calldata offerIds) public {
             if "this." in str(_node).lower(): # Crude but should do the trick
                 return _node
         return None
-
-    # def _toTable(self):
-    #     """"
-    #     example:
-    #     | File | Contract | Function |
-    #     ------------------------------
-    #     """
-    #     ### ---------------edit here---------------
-    #     header = ["File", "Contract"]
-    #     ### ---------------------------------------
-        
-    #     try:
-    #         table = [header]
-    #         column_max_len = [len(h) for h in header]
-    #         detect_results = self._detect()
-    #         for r in detect_results:
-    #             row = []
-    #             for e in r.elements:
-    #                 # pprint(e)
-    #                 ### ---------------edit here---------------
-    #                 ### Get data from object
-    #                 line = e['source_mapping']['lines'][0]
-    #                 file = "%s (L:%s)" % (e["source_mapping"]["filename_short"].split("/")[-1], line)
-    #                 contract = e["type_specific_fields"]["parent"]["name"]
-    #                 # function = e["name"] + "()"
-    #                 ### Map to row
-    #                 row.append(file)
-    #                 row.append(contract)
-    #                 # row.append(function)
-    #                 ### ---------------------------------------
-    #                 ### Check max len
-    #                 for i in range(len(row)):
-    #                     column_max_len[i] = column_max_len[i] if column_max_len[i] > len(row[i]) else len(row[i])
-    #                 table.append(row)
-    #                 break
-    #         return markdownTableFromSlitherResult(table, column_max_len, header[0])
-    #     except Exception as e:
-    #         pprint(e)
-    #         return ""

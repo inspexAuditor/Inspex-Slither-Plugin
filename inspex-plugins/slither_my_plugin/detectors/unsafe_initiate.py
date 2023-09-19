@@ -1,12 +1,8 @@
-from pprint import pprint
 from typing import List
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract, Modifier
-from slither.core.cfg.node import Node, NodeType
-from slither.core.expressions.call_expression import CallExpression
+from slither.core.cfg.node import Node
 from slither.utils.output import Output
-from slither_my_plugin.utils.table_generator import markdownTableFromSlitherResult
-from slither_my_plugin.detectors.extends.summary_table import SummaryTable
 
 
 class UnsafeInitiate(AbstractDetector):

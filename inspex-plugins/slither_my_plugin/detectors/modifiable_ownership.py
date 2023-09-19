@@ -1,8 +1,6 @@
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
-from slither.slithir.operations.event_call import EventCall
 from slither.utils.output import Output
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
 
@@ -20,7 +18,6 @@ class ModifiableOwnership(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Contract ownership should not be modifiable by unauthorized actors"
     WIKI_DESCRIPTION = "Functions with the ability to transfer the ownership of the contract should have a proper access control measure implemented to prevent unauthorized parties from taking over the contract ownership."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 contract Owner {

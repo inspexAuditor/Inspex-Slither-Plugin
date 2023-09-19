@@ -135,11 +135,9 @@ class InspexTestingGuideChecklist(AbstractPrinter):
         detectorMap = self.createDetectorMapping()
         
         for standard in STANDARD_ISSUES:
-            # print(standard[0])
             self.addResult(standard[0])
             count = 0
             for testing in standard[1:]:
-                # print(f'\t{testing[0]}') # 1. Testing Arithmetic Operation and Conversion
                 self.addResult(f'\t{testing[0]}')
                 for issue in testing[1:]:
                     subHead = issue[0]
@@ -155,10 +153,8 @@ class InspexTestingGuideChecklist(AbstractPrinter):
                                 if '#' in finding:
                                     count += 1
                                     total += 1
-                                    formatedFinding = f'- [ ] (IDX-{total}) {finding}'
                                     headFindings.append(f'- [ ] (IDX-{total}) {finding}') # Print each findings
                                     detected.append(f'- [ ] (IDX-{total}) {subHead} | {finding}')
-                    # detected += headFindings
                     if len(issue[1]) == 0: # Dont have any supported detector
                         subHead = f'❗️ {subHead}'
                         headFindings = ['- [ ] Checked ( There are no supported detectors at the moment. Please manually audit. )']
@@ -168,22 +164,15 @@ class InspexTestingGuideChecklist(AbstractPrinter):
                         headFindings = ['( No issue found )']
                     else:
                         subHead = f'🔎 {subHead}'
-                    # print(f'\t  {subHead}') # 1.1     Integer Overflow and Underflow
                     self.addResult(f'\t  {subHead}')
                     for f in headFindings:
-                        # print(f'\t{f}') # Print each findings
                         self.addResult(f'\t{f}')
-                    # print('')
                     self.addResult('')
-            # print(f'There are {count} issue(s) need too be addressed')
             self.addResult(f'There are {count} issue(s) need too be addressed')
-            # print('-'*3+'\n')
             self.addResult('-'*3+'\n')
 
-        # print('##All detected issues\n')
         self.addResult('##All detected issues\n')
         for i in detected:
-            # print(i)
             self.addResult(i)
         return self.generate_output("")
     
@@ -222,12 +211,7 @@ class InspexTestingGuideChecklistXLS(InspexTestingGuideChecklistCSV):
     WIKI = "https://inspex.gitbook.io/testing-guide/"
 
     def deliverResult(self, result):
-        workbook = xlsxwriter.Workbook("file.xlsx", {'in_memory': True})
-
-        bold = workbook.add_format({'bold': True})
-        underline = workbook.add_format({'underline': True})
-        boldUnderline = workbook.add_format({'bold': True, 'underline': True})
-        noBorder = workbook.add_format({'border': 0})
+        workbook = xlsxwriter.Workbook("InspexChecklist.xlsx", {'in_memory': True})
 
         ws1 = workbook.add_worksheet("Checklist")
         # Set heading
@@ -273,5 +257,6 @@ class InspexTestingGuideChecklistXLS(InspexTestingGuideChecklistCSV):
                     ws1.write_row(offset+i,1,line[1:], white)
             i += 1
 
-        ws2 = workbook.add_worksheet("Issues")
+        # ws2 = workbook.add_worksheet("Issues")
         workbook.close()
+        print("The checklist file, 'InspexChecklist.xlsx', has been created.")

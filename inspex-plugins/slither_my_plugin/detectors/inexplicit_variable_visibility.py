@@ -1,10 +1,8 @@
 
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
 from slither.utils.output import Output
-from slither.core.expressions.type_conversion import TypeConversion
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
 
 
@@ -21,7 +19,6 @@ class InexplicitVariableVisibility(AbstractDetector, SummaryTable):
     WIKI_TITLE = "State and function visibility should be explicitly labeled"
     WIKI_DESCRIPTION = "Check that all state variables and functions have explicit visibility."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 contract Visibility {
     uint256 state;

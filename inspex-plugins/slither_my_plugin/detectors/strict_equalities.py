@@ -1,8 +1,4 @@
-from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
-from slither.core.declarations import Contract
-from slither.utils.output import Output
 from slither.analyses.data_dependency.data_dependency import is_dependent_ssa
 from slither.core.declarations import Function
 from slither.core.declarations.function_top_level import FunctionTopLevel
@@ -14,9 +10,7 @@ from slither.slithir.operations import (
     HighLevelCall,
     SolidityCall,
 )
-
 from slither.core.solidity_types import MappingType, ElementaryType
-
 from slither.core.variables.state_variable import StateVariable
 from slither.core.declarations.solidity_variables import (
     SolidityVariable,
@@ -41,7 +35,6 @@ class StrictEqualities(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Strict equalities should not cause the function to be unusable"
     WIKI_DESCRIPTION = "When determining the value of a state controllable by external actors, such as account balance, strict equality should not be used. This is because the state can be changed, such as by directly transfer to the contract, causing the function to be unusable."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 function goalReached() public returns(bool){

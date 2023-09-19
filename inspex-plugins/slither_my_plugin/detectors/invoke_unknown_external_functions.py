@@ -1,6 +1,5 @@
 
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
 from slither.utils.output import Output
@@ -20,7 +19,6 @@ class InvokeUnknownExternalFunctions(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Unknown external components should not be invoked"
     WIKI_DESCRIPTION = "Check that only known and trusted contracts are invoked."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";

@@ -1,12 +1,9 @@
 
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
 from slither.utils.output import Output
-from slither.core.expressions.type_conversion import TypeConversion
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
-
 
 class StateChangingLoop(AbstractDetector, SummaryTable):
 
@@ -21,7 +18,6 @@ class StateChangingLoop(AbstractDetector, SummaryTable):
     WIKI_TITLE = "State changing functions that loop over unbounded data structures should not be used"
     WIKI_DESCRIPTION = "Check that there is no action which requires looping over the entire unbounded data structure."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 function calculateInterests() public {
 	for (uint i = 0; i < users.length; i++) {

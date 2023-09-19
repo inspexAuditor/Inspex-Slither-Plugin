@@ -1,15 +1,11 @@
-from pprint import pprint
 from typing import List
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
-from slither.core.expressions.call_expression import CallExpression
-from slither.core.expressions.binary_operation import BinaryOperation, BinaryOperationType
+from slither.core.expressions.binary_operation import BinaryOperation
 from slither.core.expressions.identifier import Identifier
 from slither.core.expressions.expression import Expression
 from slither.utils.output import Output
 from slither.core.cfg.node import Node, NodeType
-from slither_my_plugin.utils.table_generator import markdownTableFromSlitherResult
-from slither_my_plugin.detectors.extends.summary_table import SummaryTable
 
 
 class DirtyIterators(AbstractDetector):

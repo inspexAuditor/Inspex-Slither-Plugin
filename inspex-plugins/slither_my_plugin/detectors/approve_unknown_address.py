@@ -1,6 +1,5 @@
 
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
 from slither.utils.output import Output
@@ -20,7 +19,6 @@ class ApproveUnknownAddress(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Funds should not be approved or transferred to unknown accounts"
     WIKI_DESCRIPTION = "Funds approved or transferred to an unknown account can be pulled from the contract anytime by the target account. Funds should only be transferred or approved to accounts within the trusted scope."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";

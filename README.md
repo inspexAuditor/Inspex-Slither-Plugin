@@ -6,15 +6,21 @@ This is a collection of slither custom plugins developed by Inspex team. The plu
 
 ### Integrate into Slither
 
-The plugins are built from slither's plugin template. You need the slither's source code the install the plugin. This method uses the virtual environment in the slither's repository to segregate
+The plugins are built from official Slihter's plugin template. The installer will attempt to install the plugin into cuurent python environment, which could have an error about the installer trying to write file without the permission. We are strongly suggest you install the plugins in a virtual environment. 
 
+The official Slihter's repository has already come with a virtual environment. You can use that to create a virtual environment solely for pluing-installed slither.
+
+**Use Slither's env**
 ```bash
 git clone https://github.com/crytic/slither.git
-cp inspex-plugins/*  slither/plugin_example/
 cd slither
 make dev
 source env/bin/activate
-cd plugin_example
+```
+
+**Install the plugins**
+```bash
+cd inspex-plugins
 python setup.py develop
 ```
 

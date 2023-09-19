@@ -1,7 +1,6 @@
 
 import pprint
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
 from slither.utils.output import Output
@@ -22,7 +21,6 @@ class AssignMemoryArray(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Modification of array state should not be done by value"
     WIKI_DESCRIPTION = "Array state can be passed into a function by reference or by value, using the storage or memory keywords respectively. If the state is aimed to be modified, it should not be passed by value."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 contract Memory {

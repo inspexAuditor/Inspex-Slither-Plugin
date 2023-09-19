@@ -1,4 +1,3 @@
-from pprint import pprint
 from typing import List
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract

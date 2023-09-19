@@ -2,7 +2,6 @@ from typing import List
 from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
-from slither.slithir.operations.event_call import EventCall
 from slither.utils.output import Output
 from slither.core.expressions.type_conversion import TypeConversion
 from slither_my_plugin.detectors.extends.summary_table import SummaryTable
@@ -20,7 +19,6 @@ class ExplicitTypeConversion(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Explicit conversion of types should be checked to prevent unexpected results"
     WIKI_DESCRIPTION = "Data type of a variable can be cast to another type explicitly; however, if the destination type cannot hold the values of the original variable, unexpected values can be yielded from the truncation or padding."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 contract Cast {

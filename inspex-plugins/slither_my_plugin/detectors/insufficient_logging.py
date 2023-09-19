@@ -51,7 +51,6 @@ class InsufficientLogging(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Insufficient Logging for Privileged Functions"
     WIKI_DESCRIPTION = "Privileged functions' executions cannot be monitored easily by the users."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 ```solidity
 contract Lock {

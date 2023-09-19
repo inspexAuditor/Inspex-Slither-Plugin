@@ -1,6 +1,5 @@
 
 from typing import List
-from slither.core.cfg.node import Node
 from slither.detectors.abstract_detector import AbstractDetector, DetectorClassification
 from slither.core.declarations import Contract
 from slither.utils.output import Output
@@ -21,7 +20,6 @@ class LoopReverted(AbstractDetector, SummaryTable):
     WIKI_TITLE = "Unexpected revert should not make the whole smart contract unusable"
     WIKI_DESCRIPTION = "Check that no account can perform denial of service on the contract by reverting the transaction."
 
-    # region wiki_exploit_scenario
     WIKI_EXPLOIT_SCENARIO = """
 function sendReward() external {
 	require(!sent, "Reward sent");
