@@ -6,9 +6,9 @@ This is a collection of slither custom plugins developed by Inspex team. The plu
 
 ### Integrate into Slither
 
-The plugins are built from official Slihter's plugin template. The installer will attempt to install the plugin into cuurent python environment, which could have an error about the installer trying to write file without the permission. We are strongly suggest you install the plugins in a virtual environment. 
+The plugins are built from official Slither's plugin template. The installer will attempt to install the plugin into current python environment, which could have an error about the installer trying to write files without the permission. We strongly suggest you installing the plugins in a virtual environment. 
 
-The official Slihter's repository has already come with a virtual environment. You can use that to create a virtual environment solely for pluing-installed slither.
+The official Slither's repository has already come with a virtual environment. You can use it to create a virtual environment solely for plugin-installed slither.
 
 **Use Slither's env**
 ```bash
@@ -26,7 +26,7 @@ python setup.py develop
 
 ### Docker
 
-You can use the `Dockerfile` to build a docker image for running slither with our plugins. 
+You can use `Dockerfile` to build a docker image for running slither with our plugins. 
 
 ```bash
 # Create a new image from the Dockerfile file
@@ -69,15 +69,15 @@ docker start -ia inspex-slither
 
 You can test the installed plugins by rurnning the `--list-detectors` or `--list-printers` flags to list the installed plugin. If the plugins have been installed successfully, we should see the new plugins in the result.
 
+**List all registered detectors**
 ```bash
-# List all registered detectors
 slither --list-detectors
 ```
 
 ![](https://s3-ap-northeast-1.amazonaws.com/inspex-hackmd-ee/uploads/upload_5508a23ba6db494d7961f68c591b5281.png)
 
+**List all registered printers**
 ```bash
-# List all registered printers
 slither --list-printers
 ```
 
