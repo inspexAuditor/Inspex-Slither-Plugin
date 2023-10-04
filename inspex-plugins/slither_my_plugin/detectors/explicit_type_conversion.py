@@ -56,8 +56,9 @@ contract Cast {
         if node.expression and "_expressions" in node.expression.__dict__:
             for e in node.expression.expressions:
                 if isinstance(e, TypeConversion):
-                    res += ["\t- ", node, "\n"]
-        return res
+                    if("_type" in e.__dict__ and e._type is not None):
+                        if str(e._type) != "address":
+                            res += ["\t- ", node, "\n"]
 
     def findExplicit(self, contract: Contract):
         res = []
