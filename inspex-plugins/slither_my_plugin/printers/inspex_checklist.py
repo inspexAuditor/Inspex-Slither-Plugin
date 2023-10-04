@@ -257,6 +257,21 @@ class InspexTestingGuideChecklistXLS(InspexTestingGuideChecklistCSV):
                     ws1.write_row(offset+i,1,line[1:], white)
             i += 1
 
-        # ws2 = workbook.add_worksheet("Issues")
+        ws2 = workbook.add_worksheet("Issues")
+        ws2.set_column_pixels(0,0,50)
+        ws2.set_column_pixels(1,1,250)
+        ws2.set_column_pixels(2,2,400)
+        bold = workbook.add_format({'bold': True})
+        wrap = workbook.add_format({'text_wrap': True})
+        i += 1
+        sheet2Offset = i
+        while i < len(lines)-1:
+            line = [ '{}'.format(x) for x in list(csv.reader([lines[i]], delimiter=',', quotechar='"'))[0] ]
+            print(line)
+            if line[0] == 'ID':
+                ws2.write_row(0,0, line, bold)
+            else:
+                ws2.write_row(i-sheet2Offset,0, line, wrap)
+            i += 1
         workbook.close()
         print("The checklist file, 'InspexChecklist.xlsx', has been created.")
