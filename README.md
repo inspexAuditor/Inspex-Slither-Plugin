@@ -43,7 +43,7 @@ When the image has been built, you can use the tag name that you've used to run 
 docker run -it -v {local path to be mounted}:/home/slither/mnt --name {new name of the container} {tag name of the image}
 
 # Example
-docker run -it -v ~/myDefiProject:/home/slither/mnt --name inspex-slither inspexplugin
+docker run -it -v ~/myDefiProject:/home/slither/mnt --name inspex-slither inspexplugins
 ```
 
 If you have specified the name of the container, you can use that name to easily access to the container again by using the `docker exec` commmand.
